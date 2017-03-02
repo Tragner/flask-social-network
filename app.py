@@ -2,6 +2,8 @@ from flask import Flask
 from models import User, db
 import configparser
 app = Flask(__name__)
+app.debug = True
+app.secret_key = 'SECRET'
 
 config = configparser.ConfigParser()
 config.read('.env')
