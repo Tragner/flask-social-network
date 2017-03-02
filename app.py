@@ -1,12 +1,15 @@
 from flask import Flask
 from models import User, db
 import configparser
-app = Flask(__name__)
-app.debug = True
-app.secret_key = 'SECRET'
 
+app = Flask(__name__)
 config = configparser.ConfigParser()
 config.read('.env')
+
+app.debug = config['DEFAULT']['DEBUG']
+app.secret_key = config['DEFAULT']['SECRET_KEY']
+
+
 app.config['SECRET_KEY'] = config['DEFAULT']['SECRET_KEY']
 app.config['MAIL_SERVER'] = config['DEFAULT']['EMAIL_HOST']
 app.config['MAIL_PORT'] = config['DEFAULT']['EMAIL_PORT']

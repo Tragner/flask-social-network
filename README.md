@@ -3,8 +3,17 @@ Red social para la comunidad de Flask
 
 ## Instalación
 
-Descargar los archivos y ejecutar app.py con Python
+Instalamos las bibliotecas necesarias
+```bash
+pip install -r requirements.txt
+```
 
-## Avances futuros
+Creamos *.env* y lo configuramos
+```bash
+cp envExample .env
+```
 
-Realizar app para smartphone
+Ejecutamos
+```bash
+python app.py
+```
