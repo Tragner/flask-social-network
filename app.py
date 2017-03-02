@@ -1,5 +1,5 @@
-from flask import Flask
-from models import User, db
+from flask import Flask, redirect, url_for
+from forms import RegistrationForm
 import configparser
 
 app = Flask(__name__)
@@ -9,17 +9,13 @@ config.read('.env')
 app.debug = config['DEFAULT']['DEBUG']
 app.secret_key = config['DEFAULT']['SECRET_KEY']
 
-
-app.config['SECRET_KEY'] = config['DEFAULT']['SECRET_KEY']
-app.config['MAIL_SERVER'] = config['DEFAULT']['EMAIL_HOST']
-app.config['MAIL_PORT'] = config['DEFAULT']['EMAIL_PORT']
-app.config['MAIL_USE_SSL'] = config['DEFAULT']['EMAIL_SSL']
-app.config['MAIL_USERNAME'] = config['DEFAULT']['EMAIL_USER']
-app.config['MAIL_PASSWORD'] = config['DEFAULT']['EMAIL_PASSWORD']
-
 @app.route('/', methods=['GET', 'POST'])
-def index():
-    return 'Hello World!'
+def login():
+    return redirect(url_for('signup'))
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    return 'En registro'
 
 if __name__ == '__main__':
     app.debug = True
